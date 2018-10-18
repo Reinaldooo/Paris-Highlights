@@ -9,7 +9,7 @@ left: 8%;
 top: 10%
 transform: translateX(-8%);
 border-radius: .5rem;
-box-shadow: 15px 15px 15px rgba(0,0,0,0.02);
+box-shadow: 15px 15px 15px rgba(0,0,0,0.05);
 color: lightcoral;
 padding: 1%;
 
@@ -39,9 +39,10 @@ class MarkersList extends Component {
   }
   render() {
     return (
-      <ListDiv onClick={this.props.click}>
+      <ListDiv>
         <input type="text" placeholder="Search" />
         {this.state.markers.map((m, i) => <li key={i}>{m}</li>)}
+        <li onClick={this.props.click} style={{ color: `black`, cursor: "pointer" }}>Mostrar Detalhes</li>
       </ListDiv>
     );
   }

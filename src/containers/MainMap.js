@@ -1,28 +1,23 @@
-import React, { Component } from 'react';
-import styled from 'styled-components'
-import fakemap from '../images/fakemap.jpg'
+import React from "react";
+// import { compose, withProps } from "recompose";
+import {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  Marker
+} from "react-google-maps";
 
-const Base = styled.div`
-width: 100vw;
-height: 100vh;
-background-color: lightblue;
-background-image: url(${fakemap});
-background-size: cover;
-color: white;
-`
+// const KEY = "AIzaSyBKPusGfnzsW8wNouu-Jt5ECiA3k38DqHc";
 
-class MainMap extends Component {
-
-  state = {
-    test: true
-  }
-
-
-  render() {
-    return (
-      <Base/>
-    );
-  }
-}
+const MainMap = withScriptjs(withGoogleMap(props =>
+  <GoogleMap
+    defaultZoom={14}
+    defaultCenter={{ lat: 48.8581332, lng: 2.2936499 }}
+  >
+    <Marker
+      position={{ lat: 48.8581332, lng: 2.2936499 }}
+    />
+  </GoogleMap>
+));
 
 export default MainMap;

@@ -13,6 +13,7 @@ transform: translateX(-50%);
 font-family: 'Amatic SC', cursive;
 border-bottom-left-radius: .5rem;
 border-bottom-right-radius: .5rem;
+z-index: 1;
 
 & h1 {
   font-family: 'Amatic SC', cursive;

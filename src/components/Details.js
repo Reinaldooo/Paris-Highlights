@@ -9,7 +9,7 @@ right: 8%;
 top: 10%
 transform: translateX(8%);
 border-radius: .5rem;
-box-shadow: 15px 15px 15px rgba(0,0,0,0.02);
+box-shadow: 15px 15px 15px rgba(0,0,0,0.05);
 color: lightcoral;
 padding: 2%;
 box-sizing: border-box;

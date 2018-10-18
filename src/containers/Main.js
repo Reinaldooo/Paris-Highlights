@@ -20,20 +20,23 @@ class Main extends Component {
     show: true
   }
 
-  click = () => {
+  clickTest = () => {
     this.setState(prevState => ({
       show: !prevState.show
     }));
   }
 
-
   render() {
     return (
       <Base>
         <Logo />
-        <MainMap/>
-        <MarkersList click={this.click}/>
-        <Details show={this.state.show}/>
+        <MainMap
+          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKPusGfnzsW8wNouu-Jt5ECiA3k38DqHc&v=3.exp&libraries=geometry,drawing,places"
+          loadingElement={<div style={{ height: `100vh`, width: `100vw` }} />}
+          containerElement={<div style={{ height: `100vh`, width: `100vw` }} />}
+          mapElement={<div style={{ height: `100vh`, width: `100vw` }} />} />
+        <MarkersList click={this.clickTest} />
+        <Details show={this.state.show} />
       </Base>
     );
   }
