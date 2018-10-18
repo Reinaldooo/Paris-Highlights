@@ -3,8 +3,8 @@ import styled from 'styled-components'
 //Components Import
 import Details from '../components/Details'
 import Logo from '../components/Logo'
-import MarkersList from '../components/MarkersList'
-import Map from './Map'
+import MarkersList from './MarkersList'
+import MainMap from './MainMap'
 
 const Base = styled.div`
 width: 100vw;
@@ -17,7 +17,13 @@ color: white;
 class Main extends Component {
 
   state = {
-    test: true
+    show: true
+  }
+
+  click = () => {
+    this.setState(prevState => ({
+      show: !prevState.show
+    }));
   }
 
 
@@ -25,9 +31,9 @@ class Main extends Component {
     return (
       <Base>
         <Logo />
-        <Map/>
-        <MarkersList />
-        <Details />
+        <MainMap/>
+        <MarkersList click={this.click}/>
+        <Details show={this.state.show}/>
       </Base>
     );
   }

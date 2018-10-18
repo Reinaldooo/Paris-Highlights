@@ -3,9 +3,9 @@ import styled from 'styled-components'
 
 const LogoDiv = styled.div`
 display: flex;
-background-color: rgba(240, 128, 128, 0.6);
 color: white;
 padding: .5% 2%;
+background-color: rgba(240, 128, 128, 0.9);
 position: absolute;
 left: 50%;
 text-align: center;
@@ -25,7 +25,7 @@ const Logo = () => {
 
     return (
       <LogoDiv>
-        <h1>Paris Highlights</h1>
+          <h1>Paris Highlights</h1>
       </LogoDiv>
     );
   }
