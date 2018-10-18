@@ -11,7 +11,8 @@ transform: translateX(-8%);
 border-radius: .5rem;
 box-shadow: 15px 15px 15px rgba(0,0,0,0.05);
 color: lightcoral;
-padding: 1%;
+padding: 1% 0;
+box-sizing: border-box;
 
 & input {
   margin: 0 auto;

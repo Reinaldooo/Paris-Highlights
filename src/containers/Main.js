@@ -17,7 +17,7 @@ color: white;
 class Main extends Component {
 
   state = {
-    show: true
+    show: false
   }
 
   clickTest = () => {
