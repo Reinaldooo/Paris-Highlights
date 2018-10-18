@@ -25,25 +25,30 @@ box-sizing: border-box;
   padding: .5rem;
 }
 
-& li {
-  list-style: none;
-  font-size: 1.5rem;
+& a {
+  text-decoration: none;
+  font-size: 1.2rem;
   margin: 1rem auto;
   display: block;
   width: 80%;
+  cursor: pointer;
+  user-select: none;
 }
 `
 
 class MarkersList extends Component {
-  state = {
-    markers: ["marker1", "marker2", "marker3", "marker4", "marker5", "marker6", "marker7", "marker8", "marker9", "marker10"],
-  }
+  // state = {
+  //   markers: ["marker1", "marker2", "marker3", "marker4", "marker5", "marker6", "marker7", "marker8", "marker9", "marker10"],
+  // }
   render() {
     return (
       <ListDiv>
         <input type="text" placeholder="Search" />
-        {this.state.markers.map((m, i) => <li key={i}>{m}</li>)}
-        <li onClick={this.props.click} style={{ color: `black`, cursor: "pointer" }}>Mostrar Detalhes</li>
+        {
+          this.props.markers.map((m, i) => 
+          <a key={i} onClick={this.props.click}>{m.name}</a>
+          )
+        }
       </ListDiv>
     );
   }

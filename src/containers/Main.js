@@ -5,6 +5,7 @@ import Details from '../components/Details'
 import Logo from '../components/Logo'
 import MarkersList from './MarkersList'
 import MainMap from './MainMap'
+import { markers } from '../utils'
 
 const Base = styled.div`
 width: 100vw;
@@ -17,7 +18,8 @@ color: white;
 class Main extends Component {
 
   state = {
-    show: false
+    show: false,
+    markers
   }
 
   clickTest = () => {
@@ -34,8 +36,13 @@ class Main extends Component {
           googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKPusGfnzsW8wNouu-Jt5ECiA3k38DqHc&v=3.exp&libraries=geometry,drawing,places"
           loadingElement={<div style={{ height: `100vh`, width: `100vw` }} />}
           containerElement={<div style={{ height: `100vh`, width: `100vw` }} />}
-          mapElement={<div style={{ height: `100vh`, width: `100vw` }} />} />
-        <MarkersList click={this.clickTest} />
+          mapElement={<div style={{ height: `100vh`, width: `100vw` }} />}
+          markers={this.state.markers}
+        />
+        <MarkersList
+          click={this.clickTest}
+          markers={this.state.markers}
+        />
         <Details show={this.state.show} />
       </Base>
     );
