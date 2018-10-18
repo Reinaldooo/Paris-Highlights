@@ -10,7 +10,7 @@ const Base = styled.div`
 width: 100vw;
 height: 100vh;
 display: flex;
-background-color: lightcoral
+background-color: lightgray
 color: white;
 `
 
