@@ -6,7 +6,8 @@ export const markers = [
         lng: 2.2944813
       },
       id: 1,
-      animation: false
+      animation: false,
+      active: false
     },
     {
       name: "Museu do Louvre",
@@ -15,7 +16,8 @@ export const markers = [
         lng: 2.337644
       },
       id: 2,
-      animation: false
+      animation: false,
+      active: false
     },
     {
       name: "Notre Dame",
@@ -24,7 +26,8 @@ export const markers = [
         lng: 2.3499021
       },
       id: 3,
-      animation: false
+      animation: false,
+      active: false
     },
     {
       name: "Arco do Triunfo",
@@ -33,7 +36,8 @@ export const markers = [
         lng: 2.2950275
       },
       id: 4,
-      animation: false
+      animation: false,
+      active: false
     },
     {
       name: "Basílica do Sagrado Coração",
@@ -42,7 +46,8 @@ export const markers = [
         lng: 2.3431221
       },
       id: 5,
-      animation: false
+      animation: false,
+      active: false
     },
     {
       name: "Panteão",
@@ -51,7 +56,8 @@ export const markers = [
         lng: 2.346079
       },
       id: 6,
-      animation: false
+      animation: false,
+      active: false
     },
     {
       name: "Champs-Élysées",
@@ -60,7 +66,8 @@ export const markers = [
         lng: 2.310340
       },
       id: 7,
-      animation: false
+      animation: false,
+      active: false
     },
     {
       name: "Palácio Les Invalides",
@@ -69,7 +76,8 @@ export const markers = [
         lng: 2.311878
       },
       id: 8,
-      animation: false
+      animation: false,
+      active: false
     },
     {
       name: "Ponte Alexandre III",
@@ -78,7 +86,8 @@ export const markers = [
         lng: 2.313546
       },
       id: 9,
-      animation: false
+      animation: false,
+      active: false
     },
     {
       name: "Jardim de Luxemburgo",
@@ -87,7 +96,8 @@ export const markers = [
         lng: 2.336750
       },
       id: 10,
-      animation: false
+      animation: false,
+      active: false
     }
   ];
 
@@ -99,7 +109,8 @@ export const markers = [
         lng: 2.2944813
       },
       id: 1,
-      animation: false
+      animation: false,
+      active: false
     },
     {
       name: "Museu do Louvre",
@@ -108,7 +119,8 @@ export const markers = [
         lng: 2.337644
       },
       id: 2,
-      animation: false
+      animation: false,
+      active: false
     },
     {
       name: "Notre Dame",
@@ -117,7 +129,8 @@ export const markers = [
         lng: 2.3499021
       },
       id: 3,
-      animation: false
+      animation: false,
+      active: false
     },
     {
       name: "Arco do Triunfo",
@@ -126,7 +139,8 @@ export const markers = [
         lng: 2.2950275
       },
       id: 4,
-      animation: false
+      animation: false,
+      active: false
     },
     {
       name: "Basílica do Sagrado Coração",
@@ -135,7 +149,8 @@ export const markers = [
         lng: 2.3431221
       },
       id: 5,
-      animation: false
+      animation: false,
+      active: false
     },
     {
       name: "Panteão",
@@ -144,7 +159,8 @@ export const markers = [
         lng: 2.346079
       },
       id: 6,
-      animation: false
+      animation: false,
+      active: false
     },
     {
       name: "Champs-Élysées",
@@ -153,7 +169,8 @@ export const markers = [
         lng: 2.310340
       },
       id: 7,
-      animation: false
+      animation: false,
+      active: false
     },
     {
       name: "Palácio Les Invalides",
@@ -162,7 +179,8 @@ export const markers = [
         lng: 2.311878
       },
       id: 8,
-      animation: false
+      animation: false,
+      active: false
     },
     {
       name: "Ponte Alexandre III",
@@ -171,7 +189,8 @@ export const markers = [
         lng: 2.313546
       },
       id: 9,
-      animation: false
+      animation: false,
+      active: false
     },
     {
       name: "Jardim de Luxemburgo",
@@ -180,7 +199,8 @@ export const markers = [
         lng: 2.336750
       },
       id: 10,
-      animation: false
+      animation: false,
+      active: false
     }
   ];
 
@@ -264,3 +284,5 @@ export const markers = [
           ]
       }
   ];
+
+export const KEY = "AIzaSyBKPusGfnzsW8wNouu-Jt5ECiA3k38DqHc";

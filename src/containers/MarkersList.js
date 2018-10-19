@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const ListDiv = styled.div`
 width: 20%;
@@ -48,15 +48,6 @@ box-sizing: border-box;
   box-sizing: border-box;
 }
 
-& a {
-  text-decoration: none;
-  font-size: 1.2rem;
-  margin: 1rem auto;
-  display: block;
-  width: 80%;
-  cursor: pointer;
-  user-select: none;
-}
 
 & button.reset {
   margin: 0 auto;
@@ -71,14 +62,31 @@ box-sizing: border-box;
 }
 `
 
+const A = styled.a`
+text-decoration: none;
+color: gray;
+font-size: 1.2rem;
+margin: 1rem auto;
+display: block;
+width: 80%;
+cursor: pointer;
+user-select: none;
+
+${props => props.active && css`
+  color: lightcoral;
+  font-size: 1.4rem
+`};
+
+`
+
 class MarkersList extends Component {
   state = {
     query: ''
   }
 
   handleSubmit = (e) => {
-  e.preventDefault()
-  this.props.filterMarkers(this.state.query)
+    e.preventDefault()
+    this.props.filterMarkers(this.state.query)
   }
 
   render() {
@@ -96,7 +104,7 @@ class MarkersList extends Component {
 
         {
           this.props.markers.map((m, i) =>
-            <a key={i}>{m.name}</a>
+            <A active={m.active} key={i} onClick={() => this.props.markerClick(m.latLng, i)}>{m.name}</A>
           )
         }
         {this.props.filtered && <button className="reset" onClick={this.props.resetMarkers}>Reset Markers</button>}
