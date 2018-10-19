@@ -14,15 +14,38 @@ color: lightcoral;
 padding: 1% 0;
 box-sizing: border-box;
 
+& form {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  height: 2rem;
+}
+
 & input {
   margin: 0 auto;
-  display: block;
+  display: inline-block;
   width: 80%;
-  height: 1rem;
+  height: 100%;
   border: 1px solid lightcoral;
   background-color: white;
-  border-radius: .2rem;
+  border-top-left-radius: .2rem;
+  border-bottom-left-radius: .2rem;
   padding: .5rem;
+  box-sizing: border-box;
+}
+
+& button {
+  margin: 0;
+  width: 20%;
+  display: inline-block;
+  color: white;
+  background-color: lightcoral;
+  border: none;
+  cursor: pointer;
+  height: 100%;
+  border-top-right-radius: .2rem;
+  border-bottom-right-radius: .2rem;
+  box-sizing: border-box;
 }
 
 & a {
@@ -34,21 +57,49 @@ box-sizing: border-box;
   cursor: pointer;
   user-select: none;
 }
+
+& button.reset {
+  margin: 0 auto;
+  display: block;
+  color: white;
+  background-color: lightcoral;
+  border-radius: .2rem;
+  border: none;
+  padding: .5rem .9rem;
+  cursor: pointer;
+  width: 35%;
+}
 `
 
 class MarkersList extends Component {
-  // state = {
-  //   markers: ["marker1", "marker2", "marker3", "marker4", "marker5", "marker6", "marker7", "marker8", "marker9", "marker10"],
-  // }
+  state = {
+    query: ''
+  }
+
+  handleSubmit = (e) => {
+  e.preventDefault()
+  this.props.filterMarkers(this.state.query)
+  }
+
   render() {
     return (
       <ListDiv>
-        <input type="text" placeholder="Search" />
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            onChange={(e) => this.setState({ query: e.target.value })}
+            placeholder="Search"
+            value={this.state.query}
+          />
+          <button type="submit">Search</button>
+        </form>
+
         {
-          this.props.markers.map((m, i) => 
-          <a key={i} onClick={this.props.click}>{m.name}</a>
+          this.props.markers.map((m, i) =>
+            <a key={i}>{m.name}</a>
           )
         }
+        {this.props.filtered && <button className="reset" onClick={this.props.resetMarkers}>Reset Markers</button>}
       </ListDiv>
     );
   }

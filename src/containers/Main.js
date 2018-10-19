@@ -5,7 +5,7 @@ import Details from '../components/Details'
 import Logo from '../components/Logo'
 import MarkersList from './MarkersList'
 import MainMap from './MainMap'
-import { markers } from '../utils'
+import { markers, defaultMarkers } from '../utils'
 
 const Base = styled.div`
 width: 100vw;
@@ -19,13 +19,65 @@ class Main extends Component {
 
   state = {
     show: false,
-    markers
+    center: { lat: 48.8664771, lng: 2.3172632 },
+    activeMarker: {},
+    markerClicked: false,
+    markers,
+    zoom: 14,
+    filtered: false
   }
 
-  clickTest = () => {
+  markerClickZoom = (latLng, i) => {
+    let changedMarkers = [...this.state.markers]
+    changedMarkers[i].animation = !changedMarkers[i].animation
     this.setState(prevState => ({
-      show: !prevState.show
-    }));
+      show: !prevState.show,
+      activeMarker: prevState.markers[i],
+      markers: changedMarkers,
+      center: latLng,
+      markerClicked: true,
+      zoom: 17
+    }));   
+  }
+
+  markerClickReset = (i) => {
+    let changedMarkers = [...this.state.markers]
+    changedMarkers[i].animation = !changedMarkers[i].animation
+    this.setState(prevState => ({
+      show: !prevState.show,
+      activeMarker: {},
+      markers: changedMarkers,
+      center: { lat: 48.8664771, lng: 2.3172632 },
+      markerClicked: false,
+      zoom: 14
+    }));    
+  }
+
+  resetMap = () => {
+    this.setState({
+      show: false,
+      activeMarker: {},
+      center: { lat: 48.8664771, lng: 2.3172632 },
+      markers: defaultMarkers,
+      markerClicked: false,
+      zoom: 14
+    });
+  }
+
+  filterMarkers = (query) => {
+    this.setState({
+      markers: defaultMarkers.filter((m) => m.name.includes(query)),
+      center: { lat: 48.8664771, lng: 2.3172632 },
+      zoom: 14,
+      filtered: true
+    })
+  }
+
+  resetMarkers = () => {
+    this.setState({
+      markers: defaultMarkers,
+      filtered: false
+    })
   }
 
   render() {
@@ -38,12 +90,22 @@ class Main extends Component {
           containerElement={<div style={{ height: `100vh`, width: `100vw` }} />}
           mapElement={<div style={{ height: `100vh`, width: `100vw` }} />}
           markers={this.state.markers}
+          center={this.state.center}
+          markerClicked={this.state.markerClicked}
+          markerClickZoom={this.markerClickZoom}
+          resetMap={this.resetMap}
+          zoom={this.state.zoom}
         />
         <MarkersList
-          click={this.clickTest}
+          clickHandler={this.clickHandler}
           markers={this.state.markers}
+          markerClickZoom={this.markerClickZoom}
+          markerClickReset={this.markerClickReset}
+          filterMarkers={this.filterMarkers}
+          resetMarkers={this.resetMarkers}
+          filtered={this.state.filtered}
         />
-        <Details show={this.state.show} />
+        <Details show={this.state.show} reset={this.resetMap}/>
       </Base>
     );
   }

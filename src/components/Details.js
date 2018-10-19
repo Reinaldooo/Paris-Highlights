@@ -20,11 +20,16 @@ ${props => !props.show && css`
   display: none;
 `};
 
-// & p {
-//   ${props => !props.show && css`
-//   display: none;
-//   `};
-// }
+& button {
+  margin: 0 auto;
+  display: block;
+  color: white;
+  background-color: lightcoral;
+  border-radius: .2rem;
+  border: none;
+  padding: .5rem .9rem;
+  cursor: pointer;
+}
 
 `
 
@@ -35,6 +40,7 @@ const Details = (props) => {
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, deserunt earum illo consectetur sunt mollitia vitae repudiandae aspernatur sint, dolor, commodi odio necessitatibus. Error ad quisquam vel iste quod repudiandae.</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, deserunt earum illo consectetur sunt mollitia vitae repudiandae aspernatur sint, dolor, commodi odio necessitatibus. Error ad quisquam vel iste quod repudiandae.</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, deserunt earum illo consectetur sunt mollitia vitae repudiandae aspernatur sint, dolor, commodi odio necessitatibus. Error ad quisquam vel iste quod repudiandae.</p>
+        <button onClick={props.reset}>Back</button>
       </DetailsDiv>
     );
   }

@@ -5,7 +5,8 @@ export const markers = [
         lat: 48.85837009999999,
         lng: 2.2944813
       },
-      id: 1
+      id: 1,
+      animation: false
     },
     {
       name: "Museu do Louvre",
@@ -13,7 +14,8 @@ export const markers = [
         lat: 48.8606111,
         lng: 2.337644
       },
-      id: 2
+      id: 2,
+      animation: false
     },
     {
       name: "Notre Dame",
@@ -21,7 +23,8 @@ export const markers = [
         lat: 48.85296820000001,
         lng: 2.3499021
       },
-      id: 3
+      id: 3,
+      animation: false
     },
     {
       name: "Arco do Triunfo",
@@ -29,7 +32,8 @@ export const markers = [
         lat: 48.8737917,
         lng: 2.2950275
       },
-      id: 4
+      id: 4,
+      animation: false
     },
     {
       name: "Basílica do Sagrado Coração",
@@ -37,7 +41,8 @@ export const markers = [
         lat: 48.8865473,
         lng: 2.3431221
       },
-      id: 5
+      id: 5,
+      animation: false
     },
     {
       name: "Panteão",
@@ -45,7 +50,8 @@ export const markers = [
         lat: 48.846191,
         lng: 2.346079
       },
-      id: 6
+      id: 6,
+      animation: false
     },
     {
       name: "Champs-Élysées",
@@ -53,7 +59,8 @@ export const markers = [
         lat: 48.868931,
         lng: 2.310340
       },
-      id: 7
+      id: 7,
+      animation: false
     },
     {
       name: "Palácio Les Invalides",
@@ -61,7 +68,8 @@ export const markers = [
         lat: 48.857037,
         lng: 2.311878
       },
-      id: 8
+      id: 8,
+      animation: false
     },
     {
       name: "Ponte Alexandre III",
@@ -69,7 +77,8 @@ export const markers = [
         lat: 48.863788,
         lng: 2.313546
       },
-      id: 9
+      id: 9,
+      animation: false
     },
     {
       name: "Jardim de Luxemburgo",
@@ -77,7 +86,101 @@ export const markers = [
         lat: 48.846384,
         lng: 2.336750
       },
-      id: 10
+      id: 10,
+      animation: false
+    }
+  ];
+
+  export const defaultMarkers = [
+    {
+      name: "Torre Eiffel",
+      latLng: {
+        lat: 48.85837009999999,
+        lng: 2.2944813
+      },
+      id: 1,
+      animation: false
+    },
+    {
+      name: "Museu do Louvre",
+      latLng: {
+        lat: 48.8606111,
+        lng: 2.337644
+      },
+      id: 2,
+      animation: false
+    },
+    {
+      name: "Notre Dame",
+      latLng: {
+        lat: 48.85296820000001,
+        lng: 2.3499021
+      },
+      id: 3,
+      animation: false
+    },
+    {
+      name: "Arco do Triunfo",
+      latLng: {
+        lat: 48.8737917,
+        lng: 2.2950275
+      },
+      id: 4,
+      animation: false
+    },
+    {
+      name: "Basílica do Sagrado Coração",
+      latLng: {
+        lat: 48.8865473,
+        lng: 2.3431221
+      },
+      id: 5,
+      animation: false
+    },
+    {
+      name: "Panteão",
+      latLng: {
+        lat: 48.846191,
+        lng: 2.346079
+      },
+      id: 6,
+      animation: false
+    },
+    {
+      name: "Champs-Élysées",
+      latLng: {
+        lat: 48.868931,
+        lng: 2.310340
+      },
+      id: 7,
+      animation: false
+    },
+    {
+      name: "Palácio Les Invalides",
+      latLng: {
+        lat: 48.857037,
+        lng: 2.311878
+      },
+      id: 8,
+      animation: false
+    },
+    {
+      name: "Ponte Alexandre III",
+      latLng: {
+        lat: 48.863788,
+        lng: 2.313546
+      },
+      id: 9,
+      animation: false
+    },
+    {
+      name: "Jardim de Luxemburgo",
+      latLng: {
+        lat: 48.846384,
+        lng: 2.336750
+      },
+      id: 10,
+      animation: false
     }
   ];
 
