@@ -13,6 +13,7 @@ box-shadow: 15px 15px 15px rgba(0,0,0,0.05);
 color: lightcoral;
 padding: 1% 0;
 box-sizing: border-box;
+border: solid 2px lightgray;
 
 & form {
   display: block;
@@ -99,7 +100,7 @@ class MarkersList extends Component {
             placeholder="Search"
             value={this.state.query}
           />
-          <button type="submit">Search</button>
+          <button type="submit">GO</button>
         </form>
 
         {

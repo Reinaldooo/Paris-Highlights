@@ -2,17 +2,20 @@ import React, { Component } from 'react';
 import styled, { css } from 'styled-components'
 //Foursquare keys import
 import { F_CLIENT_ID, F_CLIENT_SECRET } from '../keys'
+//Variables
+const fourLink = "https://foursquare.com/v/"
 
 const DetailsDiv = styled.div`
-width: 20%;
+width: 30%;
 background-color: white;
 position: absolute;
 right: 8%;
 top: 10%
 transform: translateX(8%);
 border-radius: .5rem;
+border: solid 2px lightgray;
 box-shadow: 15px 15px 15px rgba(0,0,0,0.05);
-color: lightcoral;
+color: gray;
 padding: 2%;
 box-sizing: border-box;
 transition: all .5s;
@@ -40,9 +43,12 @@ ${props => !props.show && css`
   text-align: center;
 }
 & #likes {
-  color: gray;
   font-family: 'Comfortaa', cursive;
   font-size: .8rem;
+}
+& #title {
+  font-size: 1.5rem;
+  color: lightcoral
 }
 `
 const Spinner = styled.div`
@@ -88,9 +94,9 @@ class Details extends Component {
   state = {
     activeMarker: null,
     image: null,
-    request: null,
+    stopRequests: null,
     likes: null,
-    similar: null,
+    venueId: null,
     fetchOk: false
   }
 
@@ -104,7 +110,7 @@ class Details extends Component {
     }
     if (this.state.activeMarker && !this.state.stopRequests) {
       //
-      let similarAndLikes = {}
+      let venueDetails = {}
       let venue = this.state.activeMarker.name
       //
       const baseUrl = "https://api.foursquare.com/v2/venues/"
@@ -116,18 +122,18 @@ class Details extends Component {
           fetch(`${baseUrl}${venId}/similar?&${F_CLIENT_ID}&${F_CLIENT_SECRET}&v=20180815`)
             .then((res) => res.json())
             .then((res) => {
-              similarAndLikes.similar = res.response.similarVenues.items
+              venueDetails.id = venId
             })
             .then(() => {
               fetch(`${baseUrl}${venId}/likes?&${F_CLIENT_ID}&${F_CLIENT_SECRET}&v=20180815`)
                 .then((res) => res.json())
                 .then((res) => {
-                  similarAndLikes.likes = res.response.likes.count
+                  venueDetails.likes = res.response.likes.count
                   this.setState({
                     // image: `${res.response.venue.bestPhoto.prefix}original${res.response.venue.bestPhoto.suffix}`
                     stopRequests: true,
-                    similar: similarAndLikes.similar,
-                    likes: similarAndLikes.likes,
+                    likes: venueDetails.likes,
+                    venueId: venueDetails.id,
                     fetchOk: true
                   })
                 })
@@ -153,18 +159,18 @@ class Details extends Component {
           this.state.fetchOk ?
             <>
               <div>
-                <img src="https://via.placeholder.com/300" alt="" />
-                <p id="likes">{`${state.likes} likes on Foursquare`}</p>
+                <img src="https://via.placeholder.com/500" alt="" />
+                <p id="likes">{`${state.likes} likes on `}<a target="blank" href={`${fourLink}${state.venueId}`}>Foursquare</a></p>
+                <p id="title">{this.props.activeMarker.name}</p>
               </div>
-              <p>{this.props.activeMarker.name}</p>
               <p>{this.props.activeMarker.desc}</p>
-              <button onClick={() => this.props.resetMap(this.props.activeIndex)}>Back</button>
+              <button onClick={() => this.props.resetMap(this.props.activeIndex)}>Close</button>
             </>
             :
-            <>
+            <div>
               <Spinner><div></div><div></div></Spinner>
-              <p>Loading...</p>
-            </>
+              <p>Please wait...</p>
+            </div>
         }
       </DetailsDiv>
     );

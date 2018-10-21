@@ -129,7 +129,7 @@ export const markers = [
           "elementType": "labels.text.fill",
           "stylers": [
               {
-                  "color": "#f08080"
+                  "color": "gray"
               }
           ]
       },
@@ -150,6 +150,11 @@ export const markers = [
                   "visibility": "on"
               }
           ]
+      },
+      {
+        "featureType": 'poi',
+        "elementType": 'labels.text.fill',
+        "stylers": [{"visibility": 'off'}]
       },
       {
           "featureType": "road",

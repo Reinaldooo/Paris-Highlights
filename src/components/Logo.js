@@ -5,19 +5,20 @@ const LogoDiv = styled.div`
 display: flex;
 color: white;
 padding: .5% 2%;
-background-color: rgba(240, 128, 128, 0.9);
+background-color: lightcoral;
 position: absolute;
 left: 50%;
 text-align: center;
 transform: translateX(-50%);
 font-family: 'Amatic SC', cursive;
-border-bottom-left-radius: .5rem;
-border-bottom-right-radius: .5rem;
+border-bottom-left-radius: 1.5rem;
+border-bottom-right-radius: 1.5rem;
 z-index: 1;
+margin-top: -5px;
 
 & h1 {
   font-family: 'Amatic SC', cursive;
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin: 0;
 }
 `
