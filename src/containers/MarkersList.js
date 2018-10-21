@@ -6,10 +6,10 @@ width: 20%;
 background-color: white;
 position: absolute;
 left: 8%;
-top: 10%
+top: 8%
 transform: translateX(-8%);
 border-radius: .5rem;
-box-shadow: 15px 15px 15px rgba(0,0,0,0.05);
+box-shadow: 10px 10px 15px rgba(0,0,0,0.1);
 color: lightcoral;
 padding: 1% 0;
 box-sizing: border-box;
@@ -63,8 +63,8 @@ border: solid 2px lightgray;
 }
 `
 
-const A = styled.a`
-text-decoration: none;
+const A = styled.li`
+list-decoration: none;
 color: gray;
 font-size: 1.2rem;
 margin: 1rem auto;
@@ -88,6 +88,19 @@ class MarkersList extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.filterMarkers(this.state.query)
+    this.setState({
+      query: ''
+    })
+  }
+
+  clickHandler = (center, i) => {
+    if(!this.props.markerClicked) {
+      this.props.markerClick(center, i)
+    } else if (this.props.markerClicked && i !== this.props.activeIndex) {
+      this.props.markerClick(center, i, this.props.activeIndex)
+    } else {
+      this.props.resetMap(i)
+    }
   }
 
   render() {
@@ -105,7 +118,7 @@ class MarkersList extends Component {
 
         {
           this.props.markers.map((m, i) =>
-            <A active={m.active} key={i} onClick={() => this.props.markerClick(m.latLng, i)}>{m.name}</A>
+            <A active={m.active} key={i} onClick={() => this.clickHandler(m.latLng, i)}>{m.name}</A>
           )
         }
         {(this.props.filtered && !this.props.activeMarker) &&

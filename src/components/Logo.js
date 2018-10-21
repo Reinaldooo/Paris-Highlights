@@ -20,6 +20,7 @@ margin-top: -5px;
   font-family: 'Amatic SC', cursive;
   font-size: 2.5rem;
   margin: 0;
+  cursor: pointer;
 }
 `
 

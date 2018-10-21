@@ -67,18 +67,32 @@ class Main extends Component {
   }
 
   resetMap = (i) => {
-    let changedMarkers = [...this.state.markers]
-    changedMarkers[i].animation = !changedMarkers[i].animation
-    changedMarkers[i].active = !changedMarkers[i].active
-    this.setState({
-      show: false,
-      center: { lat: 48.8664771, lng: 2.3172632 },
-      markers: changedMarkers,
-      markerClicked: false,
-      zoom: 14,
-      activeMarker: null,
-      activeIndex: null
-    });
+    if(this.state.filtered) {
+      let changedMarkers = [...this.state.markers]
+      changedMarkers[i].animation = !changedMarkers[i].animation
+      changedMarkers[i].active = !changedMarkers[i].active
+      this.setState({
+        show: false,
+        center: { lat: 48.8664771, lng: 2.3172632 },
+        markerClicked: false,
+        zoom: 14,
+        activeMarker: null,
+        activeIndex: null
+      });
+    } else {
+      let changedMarkers = [...this.state.markers]
+      changedMarkers[i].animation = !changedMarkers[i].animation
+      changedMarkers[i].active = !changedMarkers[i].active
+      this.setState({
+        show: false,
+        center: { lat: 48.8664771, lng: 2.3172632 },
+        markers: defaultMarkers,
+        markerClicked: false,
+        zoom: 14,
+        activeMarker: null,
+        activeIndex: null
+      });
+    }
   }
 
   filterMarkers = (query) => {
@@ -116,13 +130,15 @@ class Main extends Component {
           zoom={this.state.zoom}          
         />
         <MarkersList
-          clickHandler={this.clickHandler}
           markers={this.state.markers}
+          markerClicked={this.state.markerClicked}
           markerClick={this.markerClick}
+          activeIndex={this.state.activeIndex}
           filterMarkers={this.filterMarkers}
           resetMarkers={this.resetMarkers}
           activeMarker={this.state.activeMarker}
           filtered={this.state.filtered}
+          resetMap={this.resetMap}
         />
         <Details
           show={this.state.show}
