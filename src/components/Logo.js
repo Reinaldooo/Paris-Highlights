@@ -22,7 +22,7 @@ z-index: 1;
 }
 `
 
-const Logo = () => {
+const Logo = (props) => {
 
     return (
       <LogoDiv>

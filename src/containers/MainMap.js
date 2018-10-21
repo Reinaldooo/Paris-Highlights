@@ -17,11 +17,17 @@ const MainMap = compose(
         markers: this.props.markers,
         zoom: this.props.zoom,
         clicked: this.props.markerClicked,
+        lastIndex: this.props.activeIndex,
         markerClick: (center, i) => {
           if (!this.state.clicked) {
             this.props.markerClick(center, i)
+            this.setState({ lastIndex: i })
+            //this else if will handle the case where the user didnt reset the map and clicked on other pin
+          } else if (this.state.clicked && i !== this.state.lastIndex) {
+            this.props.markerClick(center, i, this.state.lastIndex)
+            this.setState({ lastIndex: i })            
           } else {
-            this.props.resetMap(null, i)
+            this.props.resetMap(i)
           }
         }
       })
@@ -32,7 +38,8 @@ const MainMap = compose(
           center: this.props.center,
           zoom: this.props.zoom,
           clicked: this.props.markerClicked,
-          markers: this.props.markers
+          markers: this.props.markers,
+          lastIndex: this.props.activeIndex,
         })
       }
     }

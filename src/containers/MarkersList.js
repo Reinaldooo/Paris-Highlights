@@ -95,7 +95,7 @@ class MarkersList extends Component {
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
-            onChange={(e) => this.setState({ query: e.target.value })}
+            onChange={(e) => this.setState({ query: e.target.value.toLowerCase() })}
             placeholder="Search"
             value={this.state.query}
           />
@@ -107,7 +107,9 @@ class MarkersList extends Component {
             <A active={m.active} key={i} onClick={() => this.props.markerClick(m.latLng, i)}>{m.name}</A>
           )
         }
-        {this.props.filtered && <button className="reset" onClick={this.props.resetMarkers}>Reset Markers</button>}
+        {(this.props.filtered && !this.props.activeMarker) &&
+          <button className="reset" onClick={this.props.resetMarkers}>Reset Markers</button>
+        }
       </ListDiv>
     );
   }
