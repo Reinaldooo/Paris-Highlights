@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import styled, { css } from 'styled-components'
 import { venueExample } from '../utils'
 //Foursquare keys import
-// import { F_CLIENT_ID, F_CLIENT_SECRET } from '../keys'
+//eslint-disable-next-line
+import { F_CLIENT_ID, F_CLIENT_SECRET } from '../keys'
 //Variables
 const fourLink = "https://foursquare.com/v/"
 

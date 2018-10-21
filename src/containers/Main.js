@@ -86,7 +86,7 @@ class Main extends Component {
       this.setState({
         show: false,
         center: { lat: 48.8664771, lng: 2.3172632 },
-        markers: defaultMarkers,
+        markers: changedMarkers,
         markerClicked: false,
         zoom: 14,
         activeMarker: null,
@@ -100,13 +100,17 @@ class Main extends Component {
       markers: defaultMarkers.filter((m) => m.name.toLowerCase().includes(query)),
       center: { lat: 48.8664771, lng: 2.3172632 },
       zoom: 14,
-      filtered: true
+      filtered: true,
+      markerClicked: false,
+      activeMarker: null,
+      activeIndex: null,
+      show: false
     })
   }
 
   resetMarkers = () => {
     this.setState({
-      markers: defaultMarkers,
+      markers: [...defaultMarkers],
       filtered: false
     })
   }
