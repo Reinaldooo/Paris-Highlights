@@ -150,45 +150,45 @@ class Details extends Component {
       })
     }
     if (this.state.activeMarker && !this.state.stopRequests) {
-      // const baseUrl = "https://api.foursquare.com/v2/venues/"
-      // const venId = this.state.activeMarker.foursquareId
-      // fetch(`${baseUrl}${venId}?&${F_CLIENT_ID}&${F_CLIENT_SECRET}&v=20180815&locale=en`)
-      //   .then((res) => res.json())
-      //   .then((res) => {
-      //     let venue = {}
-      //     venue.id = res.response.venue.id
-      //     venue.img = res.response.venue.bestPhoto ?
-      //       this.createImg(res.response.venue.bestPhoto)
-      //       :
-      //       this.createImg(res.response.venue.photos.groups[1].items[0])
-      //     venue.likes = res.response.venue.likes.count
-      //     venue.address = res.response.venue.location.formattedAddress[0]
-      //     venue.rating = res.response.venue.rating
-      //     this.setState({
-      //       stopRequests: true,
-      //       fetchOk: true,
-      //       venue
-      //     })
+      //Foursquare API Call
+      const baseUrl = "https://api.foursquare.com/v2/venues/"
+      const venId = this.state.activeMarker.foursquareId
+      fetch(`${baseUrl}${venId}?&${F_CLIENT_ID}&${F_CLIENT_SECRET}&v=20180815&locale=en`)
+        .then((res) => res.json())
+        .then((res) => {
+          let venue = {}
+          venue.id = res.response.venue.id
+          venue.img = res.response.venue.bestPhoto ?
+            this.createImg(res.response.venue.bestPhoto)
+            :
+            this.createImg(res.response.venue.photos.groups[1].items[0])
+          venue.likes = res.response.venue.likes.count
+          venue.address = res.response.venue.location.formattedAddress[0]
+          venue.rating = res.response.venue.rating
+          this.setState({
+            stopRequests: true,
+            fetchOk: true,
+            venue
+          })
 
-      //   })
-      //   .catch(() => this.setState({ requestError: true }))
+        })
+        .catch(() => this.setState({ requestError: true }))
 
-      //--------------------------
-
-      let venue = {}
-      venue.id = venueExample.id
-      venue.img = venueExample.bestPhoto ?
-        this.createImg(venueExample.bestPhoto)
-        :
-        this.createImg(venueExample.photos.groups[1].items[0])
-      venue.likes = venueExample.likes.count
-      venue.address = venueExample.location.formattedAddress[0]
-      venue.rating = venueExample.rating
-      this.setState({
-        stopRequests: true,
-        fetchOk: true,
-        venue
-      })
+      // // Sample response to avoid api calls
+      // let venue = {}
+      // venue.id = venueExample.id
+      // venue.img = venueExample.bestPhoto ?
+      //   this.createImg(venueExample.bestPhoto)
+      //   :
+      //   this.createImg(venueExample.photos.groups[1].items[0])
+      // venue.likes = venueExample.likes.count
+      // venue.address = venueExample.location.formattedAddress[0]
+      // venue.rating = venueExample.rating
+      // this.setState({
+      //   stopRequests: true,
+      //   fetchOk: true,
+      //   venue
+      // })
     }
   }
 

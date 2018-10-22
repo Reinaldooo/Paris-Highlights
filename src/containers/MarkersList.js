@@ -99,8 +99,12 @@ const ListDiv = styled.div`
     border: none;
     padding: 0.5rem 0.9rem;
     cursor: pointer;
-    width: 60%;
+    width: 50%;
     max-height: 2rem;
+
+    @media (min-width: 1441px) {
+      width: 35%;
+    }
 
     @media (max-width: 700px) {
       width: 50%;
@@ -258,6 +262,7 @@ class MarkersList extends Component {
           </form>
 
           {
+            this.props.markers.length > 0 ?
             this.props.markers.map((m, i) => (
               <Marker
                 active={m.active}
@@ -267,6 +272,8 @@ class MarkersList extends Component {
                 {m.name}
               </Marker>
             ))
+            :
+            <Marker>Sorry, no results...</Marker>
           }
           <Condition test={this.props.filtered && !this.props.activeMarker}>
             <button className="reset" onClick={this.props.resetMarkers}>
