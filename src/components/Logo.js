@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components'
+//Variables import
+import { coralColor } from '../utils';
 
 const LogoDiv = styled.div`
 display: flex;
 color: white;
 padding: .5% 2%;
-background-color: lightcoral;
+background-color: ${coralColor};
 position: absolute;
 left: 50%;
 text-align: center;
@@ -29,13 +31,15 @@ width: 100%;
 }
 `
 
-const Logo = (props) => {
+const Logo = () => {
 
-    return (
-      <LogoDiv>
-          <h1>Paris Highlights</h1>
-      </LogoDiv>
-    );
-  }
+  return (
+    <LogoDiv>
+      <h1 aria-label="logotype">
+        Paris Highlights
+          </h1>
+    </LogoDiv>
+  );
+}
 
 export default Logo;

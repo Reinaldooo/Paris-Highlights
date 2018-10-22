@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 //Components Import
 import Logo from '../components/Logo'
+import Condition from '../components/Condition'
 //containers import
 import MarkersList from './MarkersList'
 import Details from './Details'
 import MainMap from './MainMap'
-//Utils import
+//Variables import
 import { markers, defaultMarkers } from '../utils'
 import { MAPSKEY as KEY } from '../keys'
 
@@ -19,12 +20,24 @@ color: white;
 box-sizing: border-box;
 `
 
+const SkipLink = styled.a`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  /* added line */
+  border: 0;
+`
+//Calculate zoom and center based on screen sizes
 const width = window.innerWidth
 || document.documentElement.clientWidth
 || document.body.clientWidth;
 
 const calculateZoom = () => {
-  console.log(width)
   if (width < 700) {
     return 12.75
   } else if (width > 700 && width < 1500){
@@ -71,8 +84,10 @@ class Main extends Component {
       //Old index means that the user didnt reset the map and clicked other pin
     } else if (oldIndex !== undefined){
       let changedMarkers = [...this.state.markers]
+      //animate and activate new pin
       changedMarkers[i].animation = !changedMarkers[i].animation
       changedMarkers[i].active = !changedMarkers[i].active
+      //reset oldpin
       changedMarkers[oldIndex].animation = !changedMarkers[oldIndex].animation
       changedMarkers[oldIndex].active = !changedMarkers[oldIndex].active
       this.setState(prevState => ({
@@ -81,7 +96,7 @@ class Main extends Component {
         activeIndex: i,
         center: latLng,
         markerClicked: true,
-        zoom: 17
+        zoom: 17,
       }));
     } else {
       //in case the user clicks on the same marker or list item    
@@ -95,6 +110,7 @@ class Main extends Component {
       changedMarkers[i].animation = !changedMarkers[i].animation
       changedMarkers[i].active = !changedMarkers[i].active
       this.setState({
+        //while filtered, markers shouldnt be reset
         show: false,
         markerClicked: false,
         activeMarker: null,
@@ -112,7 +128,11 @@ class Main extends Component {
         activeIndex: null
       });
     }
+    this.ulRef.current.focus()
   }
+
+  searchRef = React.createRef()
+  ulRef = React.createRef()
 
   filterMarkers = (query) => {
     this.setState({
@@ -132,6 +152,7 @@ class Main extends Component {
       markers: [...defaultMarkers],
       filtered: false
     })
+    this.ulRef.current.focus()
   }
 
   
@@ -139,13 +160,21 @@ class Main extends Component {
     return (
       <Base>
         <Logo />
+        <SkipLink
+        tabIndex="0"
+        onKeyUp={(e) => {if (e.which === 13) {this.ulRef.current.focus()}}}
+        >
+          Go to search highlights
+        </SkipLink>
         <MainMap
+          //Maps API settings start
           googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${KEY}&v=3.exp&libraries=geometry,drawing,places`}
           loadingElement={<div style={{ height: `100%`, width: `100%` }} />}
-          containerElement={<div role="application" style={{ height: `100%`, width: `100%` }} />}
-          mapElement={<div style={{ height: `100%`, width: `100%` }} />}
+          containerElement={<div role="application" tabIndex="-1" style={{ height: `100%`, width: `100%` }} />}
+          mapElement={<div role="application" tabIndex="-1" style={{ height: `100%`, width: `100%` }} />}
           markers={this.state.markers}
           center={this.state.center}
+          //Maps API settings end
           markerClicked={this.state.markerClicked}
           markerClick={this.markerClick}
           activeIndex={this.state.activeIndex}
@@ -162,13 +191,17 @@ class Main extends Component {
           activeMarker={this.state.activeMarker}
           filtered={this.state.filtered}
           resetMap={this.resetMap}
+          searchRef={this.searchRef}
+          ulRef={this.ulRef}
         />
-        <Details
-          show={this.state.show}
-          resetMap={this.resetMap}
-          activeMarker={this.state.activeMarker}
-          activeIndex={this.state.activeIndex}
-        />
+        <Condition test={this.state.show}>
+          <Details
+            show={this.state.show}
+            resetMap={this.resetMap}
+            activeMarker={this.state.activeMarker}
+            activeIndex={this.state.activeIndex}
+          />
+        </Condition>
       </Base>
     );
   }
