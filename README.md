@@ -6,18 +6,19 @@ This app will show you the highlights of Paris, France. You can choose a marker 
 ![Example GIF](/src/Example.gif)
 <dd> </dd>
 This site is acessible to screenreaders, fully responsive and will work offline with the help of a service worker.
-**The service worker will only work in production
+``The service worker will only work in production``
 <dd> </dd>
 <dl>
   <dt>This app was created using Javascript with the help of the following tools:</dt>
   <dd> </dd>
-  <dd>React</dd>
-  <dd>Styled Components</dd>
-  <dd>Google Maps API</dd>
-  <dd>Foursquare API</dd>
+  ```sh
+  Styled Components
+  Google Maps API
+  Foursquare API
+  ```sh
 </dl>
 
-* To load it via GitHub Pages, clicke [here](https://reinaldooo.github.io/paris-highlights/).
+* To load it via GitHub Pages, click [here](https://reinaldooo.github.io/paris-highlights/).
 * To load it in your local machine:
 * Download or clone this repo using `git clone https://github.com/Reinaldooo/paris-highlights.git` on a new terminal window.
 * Enter the folder with `cd paris-highlights`.
