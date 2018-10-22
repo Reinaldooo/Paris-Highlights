@@ -172,7 +172,6 @@ class Details extends Component {
           fetchOk: true,
           venue
         })
-        console.log("fetched")
       })
       .catch(() => this.setState({ requestError: true }))
   }
