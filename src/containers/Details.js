@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled, { css } from 'styled-components'
 import { venueExample } from '../utils'
 //Foursquare keys import
-//eslint-disable-next-line
 import { F_CLIENT_ID, F_CLIENT_SECRET } from '../keys'
 //Variables
 const fourLink = "https://foursquare.com/v/"
@@ -11,24 +10,39 @@ const DetailsDiv = styled.div`
 width: 30%;
 background-color: white;
 position: absolute;
-right: 8%;
-top: 8%
-transform: translateX(8%);
-border-radius: .5rem;
-border: solid 2px lightgray;
+right: 0;
+padding-top: 1.3%;
+top: 3.5rem;
+height: calc(100% - 3.5rem);
 box-shadow: 10px 10px 15px rgba(0,0,0,0.1);
 color: gray;
-padding: 2%;
 box-sizing: border-box;
 transition: all .5s;
 opacity: 1;
+z-index: 2;
+
+@media (max-width: 1024px) {
+  width: 40%;
+}
+@media (max-width: 768px) {
+  width: 50%;
+}
+@media (max-width: 700px) {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 0;
+  transform: translateY(0);
+  box-shadow: none;
+  padding-top: 0;
+}
 
 ${props => !props.show && css`
   display: none;
 `};
 
 & button {
-  margin: 0 auto;
+  margin: 5% auto 0;
   display: block;
   color: white;
   background-color: lightcoral;
@@ -36,23 +50,40 @@ ${props => !props.show && css`
   border: none;
   padding: .5rem .9rem;
   cursor: pointer;
+  font-size: 1rem;
+
+  @media (max-width: 700px) {
+    font-size: 1.2rem;
+    margin: 10% auto 5%;
+  }
 }
 
 & img {
-  width: 95%;
-  border-radius: .5rem;
+  width: 90%;
+  @media (max-width: 700px) {
+    width: 100%;
+    border-radius: 0;
+  }
 }
+
 & div {
   text-align: center;
 }
+
 & .small {
   font-family: 'Comfortaa', cursive;
   font-size: .8rem;
 }
+
 & #title {
   font-size: 1.5rem;
   margin-bottom: -.3rem;
+  margin-top: .3rem;
   color: lightcoral
+}
+
+& p {  
+  padding: 0 5%;
 }
 `
 const Spinner = styled.div`
@@ -103,12 +134,8 @@ class Details extends Component {
     fetchOk: false
   }
 
-  createImg = (details, best) => {
-    if (!best) {
-      return `${details.prefix}500x500${details.suffix}`
-    } else {
-      return `${details.prefix}500x500${details.suffix}`
-    }
+  createImg = (details) => {
+    return `${details.prefix}500x500${details.suffix}`
   }
 
   componentDidUpdate(prevProps) {
@@ -131,7 +158,7 @@ class Details extends Component {
       //     let venue = {}
       //     venue.id = res.response.venue.id
       //     venue.img = res.response.venue.bestPhoto ?
-      //       this.createImg(res.response.venue.bestPhoto, "best")
+      //       this.createImg(res.response.venue.bestPhoto)
       //       :
       //       this.createImg(res.response.venue.photos.groups[1].items[0])
       //     venue.likes = res.response.venue.likes.count
@@ -151,9 +178,9 @@ class Details extends Component {
       let venue = {}
       venue.id = venueExample.id
       venue.img = venueExample.bestPhoto ?
-      this.createImg(venueExample.bestPhoto, true)
-      :
-      this.createImg(venueExample.photos.groups[1].items[0])
+        this.createImg(venueExample.bestPhoto)
+        :
+        this.createImg(venueExample.photos.groups[1].items[0])
       venue.likes = venueExample.likes.count
       venue.address = venueExample.location.formattedAddress[0]
       venue.rating = venueExample.rating

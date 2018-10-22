@@ -16,7 +16,30 @@ height: 100vh;
 display: flex;
 background-color: lightgray
 color: white;
+box-sizing: border-box;
 `
+
+const width = window.innerWidth
+|| document.documentElement.clientWidth
+|| document.body.clientWidth;
+
+const calculateZoom = () => {
+  console.log(width)
+  if (width < 700) {
+    return 12.75
+  } else if (width > 700 && width < 1500){
+    return 13
+  } else {
+    return 14
+  }
+}
+const calculateCenter = () => {
+  if (width < 700) {
+    return { lat: 48.8664771, lng: 2.3232632 }
+  } else {
+    return { lat: 48.8664771, lng: 2.3172632 }
+  }
+}
 
 class Main extends Component {
   state = {
@@ -24,8 +47,8 @@ class Main extends Component {
     markerClicked: false,
     activeMarker: null,
     activeIndex: null,
-    center: { lat: 48.8664771, lng: 2.3172632 },
-    zoom: 14,
+    center: calculateCenter(),
+    zoom: calculateZoom(),
     filtered: false,
     markers,
   }
@@ -73,9 +96,7 @@ class Main extends Component {
       changedMarkers[i].active = !changedMarkers[i].active
       this.setState({
         show: false,
-        center: { lat: 48.8664771, lng: 2.3172632 },
         markerClicked: false,
-        zoom: 14,
         activeMarker: null,
         activeIndex: null
       });
@@ -85,10 +106,8 @@ class Main extends Component {
       changedMarkers[i].active = !changedMarkers[i].active
       this.setState({
         show: false,
-        center: { lat: 48.8664771, lng: 2.3172632 },
         markers: changedMarkers,
         markerClicked: false,
-        zoom: 14,
         activeMarker: null,
         activeIndex: null
       });
@@ -122,9 +141,9 @@ class Main extends Component {
         <Logo />
         <MainMap
           googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${KEY}&v=3.exp&libraries=geometry,drawing,places`}
-          loadingElement={<div style={{ height: `100vh`, width: `100vw` }} />}
-          containerElement={<div role="application" style={{ height: `100vh`, width: `100vw` }} />}
-          mapElement={<div style={{ height: `100vh`, width: `100vw` }} />}
+          loadingElement={<div style={{ height: `100%`, width: `100%` }} />}
+          containerElement={<div role="application" style={{ height: `100%`, width: `100%` }} />}
+          mapElement={<div style={{ height: `100%`, width: `100%` }} />}
           markers={this.state.markers}
           center={this.state.center}
           markerClicked={this.state.markerClicked}

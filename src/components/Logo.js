@@ -11,16 +11,21 @@ left: 50%;
 text-align: center;
 transform: translateX(-50%);
 font-family: 'Amatic SC', cursive;
-border-bottom-left-radius: 1.5rem;
-border-bottom-right-radius: 1.5rem;
-z-index: 1;
-margin-top: -5px;
+z-index: 5;
+box-sizing: border-box;
+height: 3.5rem;
+align-items: center;
+justify-content: center;
+width: 100%;
+
+@media (max-width: 700px) {
+  border-radius: 0;
+  margin-top: 0;
+}
 
 & h1 {
   font-family: 'Amatic SC', cursive;
   font-size: 2.5rem;
-  margin: 0;
-  cursor: pointer;
 }
 `
 

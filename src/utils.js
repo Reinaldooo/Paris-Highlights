@@ -86,7 +86,7 @@ export const markers = [
       id: 7,
       animation: false,
       active: false,
-      desc: "The Avenue des Champs-Élysées is an avenue in the 8th arrondissement of Paris, France, 1.9 kilometres (1.2 mi) long and 70 metres (230 ft) wide, running between the Place de la Concorde and the Place Charles de Gaulle, where the Arc de Triomphe is located. It is known for its theatres, cafés, and luxury shops, for the annual Bastille Day military parade, and as the finish of the Tour de France cycle race.",
+      desc: "The Avenue des Champs-Élysées is an avenue in the 8th arrondissement of Paris, France, 1.9 kilometres (1.2 mi) long and 70 metres (230 ft) wide, running between the Place de la Concorde and the Place Charles de Gaulle, where the Arc de Triomphe is located.",
       img: '../images/7.jpg',
       foursquareId: "4c8a4207a92fa093fe7e8fbf"
     },
