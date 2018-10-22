@@ -1,7 +1,7 @@
 ## Advanced Front-End Nanodegree Program
 ### Paris Highlights
 
-This app will show you the highlights of Paris City, in France. You can choose a marker on the list, and also search for a highlight.
+This app will show you the highlights of Paris, France. You can choose a marker on the list, and also search for a highlight.
 
 ![Example GIF](/src/Example.gif)
 <dd> </dd>
@@ -23,7 +23,6 @@ This site is acessible to screenreaders, fully responsive and will work offline 
 * Enter the folder with `cd paris-highlights`.
 * Install the dependencies with `npm install` or `yarn`.
 * A new browser will open with the app running
+* You need NodeJs to run this app locally, you can get it [here](https://nodejs.org/).
 
-`You need NodeJs to run this app locally, you can get it [here](https://nodejs.org/).`
-
-#####Reinaldo Trindade - Web Developer
+###### Reinaldo Trindade - Web Developer
