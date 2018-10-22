@@ -5,17 +5,15 @@ This app will show you the highlights of Paris, France. You can choose a marker 
 
 ![Example GIF](/src/Example.gif)
 <dd> </dd>
-This site is acessible to screenreaders, fully responsive and will work offline with the help of a service worker.
-``The service worker will only work in production``
+This site is acessible to screenreaders, fully responsive and will work offline with the help of a service worker in production mode.
 <dd> </dd>
 <dl>
   <dt>This app was created using Javascript with the help of the following tools:</dt>
   <dd> </dd>
-  ```sh
-  Styled Components
-  Google Maps API
-  Foursquare API
-  ```sh
+  <dd>React</dd>
+  <dd>Styled Components</dd>
+  <dd>Google Maps API</dd>
+  <dd>Foursquare API</dd>
 </dl>
 
 * To load it via GitHub Pages, click [here](https://reinaldooo.github.io/paris-highlights/).
