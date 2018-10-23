@@ -1106,6 +1106,3 @@ export const fadeOut = keyframes`
     opacity: 0;
   }
 `
-
-export const coralColor = "#1359A0"
-export const grayColor = "#575757"

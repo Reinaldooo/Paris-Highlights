@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styled from 'styled-components'
 //Components Import
 import Logo from '../components/Logo'
 import Condition from '../components/Condition'
@@ -8,46 +7,12 @@ import MarkersList from './MarkersList'
 import Details from './Details'
 import MainMap from './MainMap'
 //Variables import
-import { markers, defaultMarkers, coralColor } from '../utils'
+import { markers, defaultMarkers } from '../utils'
 import { MAPSKEY as KEY } from '../keys'
+//Styled Components import
+import { MapErrorDiv, SkipLink, Base } from '../styled-components'
 
-const Base = styled.div`
-width: 100vw;
-height: 100vh;
-display: flex;
-background-color: lightgray
-color: white;
-box-sizing: border-box;
-`
 
-const SkipLink = styled.a`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  /* added line */
-  border: 0;
-`
-
-const MapErrorDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  color: ${coralColor};
-
-  & h2 {
-    width: 80%;
-    margin: .2rem auto;
-  }
-`
 //Calculate zoom and center based on screen sizes
 const width = window.innerWidth
   || document.documentElement.clientWidth

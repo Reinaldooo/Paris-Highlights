@@ -1,33 +1,7 @@
 import React, { Component } from 'react';
-import styled, { css } from 'styled-components';
-//Variables import
-import { coralColor, grayColor } from '../utils'
+//styled-components import
+import { MarkerS } from '../styled-components';
 
-const MarkerS = styled.li`
-  list-decoration: none;
-  color: ${grayColor};
-  font-size: 1rem;
-  margin: 1.5rem auto;
-  display: block;
-  width: 80%;
-  cursor: pointer;
-  user-select: none;
-  padding: 0 .8rem;
-
-  &:focus {
-    border: solid 2px ${coralColor};
-    border-radius: .2rem;
-    outline: none;
-  }
-
-  @media (max-width: 1024px) {
-    font-size: 1rem;
-  }
-
-  ${props => props.active && css`
-      color: ${coralColor};
-  `};
-`;
 
 class Marker extends Component {
     
