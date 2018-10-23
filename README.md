@@ -18,10 +18,11 @@ This site is acessible to screenreaders, fully responsive and will work offline 
 
 * To load it via GitHub Pages, click [here](https://reinaldooo.github.io/paris-highlights/).
 * To load it in your local machine:
+* NodeJs is required to run this app locally, you can get it [here](https://nodejs.org/).
 * Download or clone this repo using `git clone https://github.com/Reinaldooo/paris-highlights.git` on a new terminal window.
 * Enter the folder with `cd paris-highlights`.
 * Install the dependencies with `npm install` or `yarn`.
+* Run the app with `npm start` or `yarn start`.
 * A new browser will open with the app running
-* You need NodeJs to run this app locally, you can get it [here](https://nodejs.org/).
 
 ###### Reinaldo Trindade - Web Developer
