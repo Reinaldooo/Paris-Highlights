@@ -70,8 +70,11 @@ class Main extends Component {
     if (!this.state.markerClicked) {
       //handles first click
       let changedMarkers = [...this.state.markers]
-      changedMarkers[i].animation = !changedMarkers[i].animation
-      changedMarkers[i].active = !changedMarkers[i].active
+      changedMarkers[i] = {
+        ...changedMarkers[i],
+        animation: !changedMarkers[i].animation,
+        active: !changedMarkers[i].active
+      }
       this.setState(prevState => ({
         show: !prevState.show,
         markers: changedMarkers,
@@ -85,11 +88,17 @@ class Main extends Component {
     } else if (oldIndex !== undefined){
       let changedMarkers = [...this.state.markers]
       //animate and activate new pin
-      changedMarkers[i].animation = !changedMarkers[i].animation
-      changedMarkers[i].active = !changedMarkers[i].active
+      changedMarkers[i] = {
+        ...changedMarkers[i],
+        animation: !changedMarkers[i].animation,
+        active: !changedMarkers[i].active
+      }
       //reset oldpin
-      changedMarkers[oldIndex].animation = !changedMarkers[oldIndex].animation
-      changedMarkers[oldIndex].active = !changedMarkers[oldIndex].active
+      changedMarkers[oldIndex] = {
+        ...changedMarkers[oldIndex],
+        animation: !changedMarkers[oldIndex].animation,
+        active: !changedMarkers[oldIndex].active
+      }
       this.setState(prevState => ({
         markers: changedMarkers,
         activeMarker: prevState.markers[i],
@@ -107,8 +116,11 @@ class Main extends Component {
   resetMap = (i) => {
     if(this.state.filtered) {
       let changedMarkers = [...this.state.markers]
-      changedMarkers[i].animation = !changedMarkers[i].animation
-      changedMarkers[i].active = !changedMarkers[i].active
+      changedMarkers[i] = {
+        ...changedMarkers[i],
+        animation: !changedMarkers[i].animation,
+        active: !changedMarkers[i].active
+      }
       this.setState({
         //while filtered, markers shouldnt be reset
         show: false,
@@ -118,8 +130,11 @@ class Main extends Component {
       });
     } else {
       let changedMarkers = [...this.state.markers]
-      changedMarkers[i].animation = !changedMarkers[i].animation
-      changedMarkers[i].active = !changedMarkers[i].active
+      changedMarkers[i] = {
+        ...changedMarkers[i],
+        animation: !changedMarkers[i].animation,
+        active: !changedMarkers[i].active
+      }
       this.setState({
         show: false,
         markers: changedMarkers,
@@ -149,7 +164,7 @@ class Main extends Component {
 
   resetMarkers = () => {
     this.setState({
-      markers: [...defaultMarkers],
+      markers: defaultMarkers.slice(),
       filtered: false
     })
     this.ulRef.current.focus()
@@ -169,7 +184,7 @@ class Main extends Component {
         <MainMap
           //Maps API settings start
           googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${KEY}&v=3.exp&libraries=geometry,drawing,places`}
-          loadingElement={<div style={{ height: `100%`, width: `100%` }} />}
+          loadingElement={<div style={{ height: `100%`, width: `100%` }}>ha</div>}
           containerElement={<div role="application" tabIndex="-1" style={{ height: `100%`, width: `100%` }} />}
           mapElement={<div role="application" tabIndex="-1" style={{ height: `100%`, width: `100%` }} />}
           markers={this.state.markers}

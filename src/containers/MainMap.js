@@ -55,7 +55,7 @@ const MainMap = compose(
   >
     {props.markers.map((marker, index) =>
       <Marker
-        key={index}
+        key={marker.id}
         position={marker.latLng}
         title={marker.name}
         animation={marker.animation ? google.maps.Animation.DROP : null}

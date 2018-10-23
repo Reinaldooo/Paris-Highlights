@@ -282,7 +282,7 @@ class MarkersList extends Component {
                 <Marker
                   active={m.active}
                   index={i}
-                  key={i}
+                  key={m.id}
                   clickHandler={this.clickHandler}
                   latLng={m.latLng}
                   name={m.name}
