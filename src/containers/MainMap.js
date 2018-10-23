@@ -53,15 +53,17 @@ const MainMap = compose(
     center={props.center}
     defaultOptions={{ styles, disableDefaultUI: true }}
   >
-    {props.markers.map((marker, index) =>
-      <Marker
-        key={marker.id}
-        position={marker.latLng}
-        title={marker.name}
-        animation={marker.animation ? google.maps.Animation.DROP : null}
-        onClick={() => props.markerClick(marker.latLng, index)}
-      />
-    )}
+    {
+      props.markers.map((marker, index) =>
+            <Marker
+              key={marker.id}
+              position={marker.latLng}
+              title={marker.name}
+              animation={marker.animation ? google.maps.Animation.DROP : null}
+              onClick={() => props.markerClick(marker.latLng, index)}
+            />
+      )
+    }
   </GoogleMap>
 );
 
