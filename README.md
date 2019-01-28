@@ -16,7 +16,7 @@ This site is acessible to screenreaders, fully responsive and will work offline 
   <dd>Foursquare API</dd>
 </dl>
 
-* To load it via GitHub Pages, click [here](https://reinaldooo.github.io/paris-highlights/).
+* To load it via Netlify, click [here](https://paris-highlights.netlify.com/).
 * To load it in your local machine:
 * NodeJs is required to run this app locally, you can get it [here](https://nodejs.org/).
 * Download or clone this repo using `git clone https://github.com/Reinaldooo/paris-highlights.git` on a new terminal window.
